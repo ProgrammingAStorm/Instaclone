@@ -1,13 +1,6 @@
 var multer = require('multer');
-  
-var storage = multer.diskStorage({
-    destination: (req, file, cb) => {
-        cb(null, require('../../client/public/uploads'))
-    },
-    filename: (req, file, cb) => {
-        cb(null, file.fieldname + '-' + Date.now())
-    }
-});
+
+const storage = multer.memoryStorage()
   
 var upload = multer({ storage: storage });
 
