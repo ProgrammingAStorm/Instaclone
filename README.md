@@ -1,4 +1,6 @@
-# Instaclome
+# Instaclone
+## Description
+Made with the MERN stack, Instaclone is full-stack, content-driven, web app with the intention of emulating Instaclone. Users are authenticated and allowed to upload images to the database. From there users can browse all of the uploaded pictures
 
 ## Disclaimer
 This is not the original project. The original project was a capstone of a coding bootcamp with 3 other contributors (see below).
