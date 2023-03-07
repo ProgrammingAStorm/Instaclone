@@ -1,51 +1,18 @@
-<h2>Description</h2>
-A social media app similar to Instagram.
+# Instaclome
 
-<h2>Preview</h2>
+## Disclaimer
+This is not the original project. The original project was a capstone of a coding bootcamp with 3 other contributors (see below).
+The original project, however, was left in an imperfect state. I have merely copied the files so I could work on it myself without having to disturb the owner of the repository for pull request approval.
 
-![image](https://user-images.githubusercontent.com/13123028/188987065-48aca390-9c5b-4ef6-b799-1cb7323d52bc.png)
+The only things I'm changing on this repo are tweaks to get the site hosted functionally on heroku. Beyond that, I do not take full credit for this project. While I did do some API routes and some front-end functionality, the whole project was a team effort and credit where credit is due.
 
-<h2>Demo</h2>
+## Original
+[https://github.com/VN135766/Instaclone-](https://github.com/VN135766/Instaclone-)
 
-<a href="https://still-eyrie-08657.herokuapp.com/">Click here to go to the Live Demo</a><br/>
-
-## Installation Instructions
-
-
-<h2>Core Features</h2>
-
- ## 🛠️ Tech Stack
-
-- Frontend
-
-  - React
-
-
-- Backend
-
-  - Node.js
-  - REST
-  - Express js
-  - Multer
-
-- Auth
-
-  - Cookie
-  - JWT
-  - Password hashing (bcrypt)
-
-- DB
-
-  - MongoDB
-
-  <h2>Features that will be added soon</h2>  
-   <ul class="bullet--1">
-    <li><p>placeholder</p></li>
-
-   </ul>
+## Deployment
+TBD
 
 ## Contributors
-
 [<img src="https://avatars.githubusercontent.com/u/100727488?s=400&u=67de04417074e264828299fabf74d3dd4fe71584&v=4" width="75" height="75">](https://github.com/VN135766)
 [<img src="https://avatars.githubusercontent.com/u/5594847?v=4" width="75" height="75">](https://github.com/rstanbaugh)
 [<img src="https://avatars.githubusercontent.com/u/13123028?v=4" width="75" height="75">](https://github.com/ProgrammingAStorm)
