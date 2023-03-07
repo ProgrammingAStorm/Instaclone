@@ -29,22 +29,22 @@ const getAllPosts = async (req, res) => {
   // console.log(user)
   //if (user.valid) {
 
-    console.log("A token was passed in the request")
-    //console.log("user name: ", user.user_name)
-    try {
-      const getAllQuery = await Post.find({})
-        .populate({
-          path: 'comments',
-          select: '-__v'
-        })
-        .populate({
-          path: 'createdBy',
-          select: ('user_name')
-        })
-      res.status(200).json({ result: "success", payload: getAllQuery });
-    } catch (err) {
-      res.status(400).json({ message: 'No posts found' });
-    }
+  console.log("A token was passed in the request")
+  //console.log("user name: ", user.user_name)
+  try {
+    const getAllQuery = await Post.find({})
+      .populate({
+        path: 'comments',
+        select: '-__v'
+      })
+      .populate({
+        path: 'createdBy',
+        select: ('user_name')
+      })
+    res.status(200).json({ result: "success", payload: getAllQuery });
+  } catch (err) {
+    res.status(400).json({ message: 'No posts found' });
+  }
   // } else {
   //   res.status(401).json({ message: "UnAuthorized - invalid token" })
   // }
@@ -125,14 +125,15 @@ const createPost = async (req, res) => {
   const user = decodeToken(token)
 
   if (user.valid === 'TRUE') {
-
-    console.log(req.body)
+    console.log(`file:`)
     console.log(req.file)
 
-    var obj = {
-      imageName: `${user.user_name}-${req.file.filename}`,
+    res.status(200)
+
+    const obj = {
+      imageName: `${user.user_name}-${req.file.originalname}`,
       imageCaption: req.body.imageCaption,
-      image: `uploads/${req.file.filename}`,
+      image: req.file.buffer,
       createdBy: user._id
     }
     Post.create(obj, (err, item) => {
