@@ -1,16 +1,16 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 
 import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 
 const CreatePost = (props) => {
-    const [file, setFile] = useState(null);
+    const [file, setFile] = useState('');
     const [caption, setCaption] = useState('');
 
     return (
         <Container>
-            <Form encType='multipart/form-data' method='POST' action='/api/post'>
+            <Form>
                 <Form.Group
                     className=' m-1'
                 >
@@ -41,6 +41,19 @@ const CreatePost = (props) => {
                     <Button
                         className='m-2 align-self-center'
                         type='submit'
+                        onClick={async e => {
+                            e.preventDefault()
+
+                            const formData = new FormData();
+
+                            formData.append("image", file)
+                            formData.append("imageCaption", caption)
+
+                            fetch("/api/post", {
+                                method: "POST",
+                                body: formData
+                            });
+                        }}
                     >
                         Submit
                     </Button>
