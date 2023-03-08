@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 import '../post.css'
 
 function Post({ username, caption, imageString, userID, imageType }) {
@@ -6,9 +7,9 @@ function Post({ username, caption, imageString, userID, imageType }) {
         <div className='post_container'>
             <div className='post'>
                 <h3 className='post_username'>
-                    <a href={`/user/${userID}`}>
+                    <Link to={`/user/${userID}`}>
                         {username}
-                    </a>
+                    </Link>
                 </h3>
 
                 <img className='post_img' src={`data:${imageType};base64,${imageString}`}></img>
