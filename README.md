@@ -12,7 +12,7 @@ The only things I'm changing on this repo are tweaks to get the site hosted func
 [https://github.com/VN135766/Instaclone-](https://github.com/VN135766/Instaclone-)
 
 ## Deployment
-TBD
+[https://instaclonev2.herokuapp.com/login](https://instaclonev2.herokuapp.com/login)
 
 ## Contributors
 [<img src="https://avatars.githubusercontent.com/u/100727488?s=400&u=67de04417074e264828299fabf74d3dd4fe71584&v=4" width="75" height="75">](https://github.com/VN135766)
