@@ -23,7 +23,7 @@ const getAllPosts = async (req, res) => {
   if (user.valid) {
     console.log("A token was passed in the request")
     try {
-      const getAllQuery = await Post.find({})
+      const getAllQuery = await Post.find({}).sort({ _id: -1})
         .populate({
           path: 'comments',
           select: '-__v'
