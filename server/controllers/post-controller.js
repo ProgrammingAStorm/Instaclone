@@ -11,43 +11,35 @@ const getAllPosts = async (req, res) => {
   console.log("====================")
   console.log("getAllPosts function")
 
-  // if (testStatus) {
-  //   // if we are in test mode
-  //   var token = devToken
-  // } else {
-  //   // must have a token in the header
-  //   if (!req.headers.cookie.split('=')[1]) {
-  //     return res.status(401)
-  //       .json({ msg: "un-authorized - missing or expired token in req header" })
-  //   }
-  //   let token = req.headers.cookie.split('=')[1]
-  // }
-
-  // const user = decodeToken(token)
-
-
-  // console.log(user)
-  //if (user.valid) {
-
-  console.log("A token was passed in the request")
-  //console.log("user name: ", user.user_name)
-  try {
-    const getAllQuery = await Post.find({})
-      .populate({
-        path: 'comments',
-        select: '-__v'
-      })
-      .populate({
-        path: 'createdBy',
-        select: ('user_name')
-      })
-    res.status(200).json({ result: "success", payload: getAllQuery });
-  } catch (err) {
-    res.status(400).json({ message: 'No posts found' });
+  if (!req.headers.cookie.split('=')[1]) {
+    return res.status(401)
+      .json({ msg: "un-authorized - missing or expired token in req header" })
   }
-  // } else {
-  //   res.status(401).json({ message: "UnAuthorized - invalid token" })
-  // }
+
+  const token = req.headers.cookie.split('=')[1]
+
+  const user = decodeToken(token)
+
+  if (user.valid) {
+    console.log("A token was passed in the request")
+    try {
+      const getAllQuery = await Post.find({})
+        .populate({
+          path: 'comments',
+          select: '-__v'
+        })
+        .populate({
+          path: 'createdBy',
+          select: ('user_name')
+        });
+
+      res.status(200).json({ result: "success", payload: getAllQuery });
+    } catch (err) {
+      res.status(400).json({ message: 'No posts found' });
+    }
+  } else {
+    res.status(401).json({ message: "UnAuthorized - invalid token" })
+  }
 }
 
 // get post by id
@@ -125,15 +117,11 @@ const createPost = async (req, res) => {
   const user = decodeToken(token)
 
   if (user.valid === 'TRUE') {
-    console.log(`file:`)
-    console.log(req.file)
-
-    res.status(200)
-
     const obj = {
       imageName: `${user.user_name}-${req.file.originalname}`,
       imageCaption: req.body.imageCaption,
-      image: req.file.buffer,
+      imageBuffer: req.file.buffer,
+      imageType: req.file.mimetype,
       createdBy: user._id
     }
     Post.create(obj, (err, item) => {

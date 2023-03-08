@@ -58,7 +58,7 @@ const UserWithImgs = (props) => {
                         <Image
                             className="post_img"
                             thumbnail
-                            src={`/${post.image}`}
+                            src={`data:${post.imageType};base64,${post.imageString}`}
                         />
                     )
                 })}

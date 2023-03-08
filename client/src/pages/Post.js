@@ -1,11 +1,7 @@
 import React from 'react'
 import '../post.css'
-//import Form from 'react-bootstrap/Form'
-//import Button from 'react-bootstrap/Button'
 
-
-
-function Post({ username, caption, imageUrl, userID, author, comment }) {
+function Post({ username, caption, imageString, userID, imageType }) {
     return (
         <div className='post_container'>
             <div className='post'>
@@ -15,7 +11,7 @@ function Post({ username, caption, imageUrl, userID, author, comment }) {
                     </a>
                 </h3>
 
-                <img className='post_img' src={imageUrl}></img>
+                <img className='post_img' src={`data:${imageType};base64,${imageString}`}></img>
 
                 <h4 className='post_caption'><strong>{username}: </strong>{caption}</h4>
 
@@ -35,7 +31,7 @@ function Post({ username, caption, imageUrl, userID, author, comment }) {
                 </div>*/}
             </div>
         </div>
-    )
+    );
 }
 
 export default Post

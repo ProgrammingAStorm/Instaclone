@@ -47,10 +47,11 @@ const Home = (props) => {
               key={post._id}
               username={post.createdBy.user_name}
               caption={post.imageCaption}
-              imageUrl={post.image}
+              imageString={post.imageString}
               userID={post.createdBy._id}
-              //author={post.author._id}
-              //comment={post.body}
+              imageType={post.imageType}
+            //author={post.author._id}
+            //comment={post.body}
             />
           ))
         }

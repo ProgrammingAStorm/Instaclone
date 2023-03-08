@@ -1,14 +1,18 @@
 const { Schema, model } = require('mongoose');
 const dateFormat = require('../utils/dateFormat');
 
-const PostSchema = new Schema (
+const PostSchema = new Schema(
   {
     imageName: {
       type: String,
       required: true
     },
-    image: {
+    imageBuffer: {
       type: Buffer,
+      required: true
+    },
+    imageType: {
+      type: String,
       required: true
     },
     imageCaption: {
@@ -50,9 +54,16 @@ const PostSchema = new Schema (
   }
 )
 
-PostSchema.virtual('commentCount').get(function() {
+PostSchema.virtual('commentCount').get(function () {
   return this.comments.length;
 });
+
+PostSchema.virtual('imageString').get(function () {
+  const buff = Buffer.from(this.imageBuffer, "utf-8")
+  const base64 = buff.toString("base64")
+
+  return base64;
+})
 
 const Post = model("Post", PostSchema);
 module.exports = Post;
