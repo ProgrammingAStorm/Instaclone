@@ -1,4 +1,7 @@
 import { useState } from 'react';
+import {
+    Navigate, useNavigate
+} from "react-router-dom";
 
 import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
@@ -9,15 +12,17 @@ const CreatePost = (props) => {
     const [caption, setCaption] = useState('');
     const [validated, setValidated] = useState(false);
 
+    const navigate = useNavigate();
+
     const handleSubmit = async (event) => {
+        event.preventDefault();
+        event.stopPropagation();
+
         const form = event.currentTarget;
         if (form.checkValidity() === false) {
-            event.preventDefault();
-            event.stopPropagation();
             setValidated(true);
             return;
         }
-
 
         const formData = new FormData();
 
@@ -28,6 +33,8 @@ const CreatePost = (props) => {
             method: "POST",
             body: formData
         });
+
+        navigate('/')
     };
 
     return (

@@ -80,9 +80,7 @@ function App() {
           />
           <Route
             path="/create"
-            element={
-              authUser ? <CreatePost /> : <Navigate replace to={"/login"} />
-            }
+            element={authUser ? <CreatePost /> : <Navigate replace to={"/login"} />}
           />
           <Route
             path="/user/:id"
